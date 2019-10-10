@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1421779440 source:c:\users\santiago\desktop\monitor\cliente\conexao.cpp
+	"Conexao.h"
+
+1421779505 c:\users\santiago\desktop\monitor\cliente\conexao.h
+	<Ws2tcpip.h>
+	<pthread.h>
+	<stdio.h>
+
+1421443008 source:c:\users\santiago\desktop\monitor\cliente\main.cpp
+	"Conexao.h"
+
+1415147807 source:c:\users\santiago\desktop\monitor\cliente\conexaocliente.cpp
+	"ConexaoCliente.h"
+
+1415148057 c:\users\santiago\desktop\monitor\cliente\conexaocliente.h
+	<ws2tcpip.h>
+	<pthread.h>
+	<stdio.h>
+

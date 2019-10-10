@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1415153499 source:c:\users\santiago\desktop\monitor\servidor\conexaoservidor.cpp
+	"ConexaoServidor.h"
+
+1415154844 c:\users\santiago\desktop\monitor\servidor\conexaoservidor.h
+	<ws2tcpip.h>
+	<pthread.h>
+	<stdio.h>
+
+1421783185 source:c:\users\santiago\desktop\monitor\servidor\main.cpp
+	"Headers.h"
+
+1421782188 c:\users\santiago\desktop\monitor\servidor\servidor.h
+	<vector>
+
+1421414791 c:\users\santiago\desktop\monitor\servidor\bibliotecasocket.h
+	<ws2tcpip.h>
+
+1421415242 c:\users\santiago\desktop\monitor\servidor\constantes.h
+
+1421783567 source:c:\users\santiago\desktop\monitor\servidor\servidor.cpp
+	"Headers.h"
+
+1421782621 source:c:\users\santiago\desktop\monitor\servidor\conexao.cpp
+	"Headers.h"
+
+1421779379 c:\users\santiago\desktop\monitor\servidor\conexao.h
+
+1421431034 c:\users\santiago\desktop\monitor\servidor\headers.h
+	"bibliotecasocket.h"
+	<pthread.h>
+	"Conexao.h"
+	"Servidor.h"
+	<stdio.h>
+
