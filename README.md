@@ -7,4 +7,4 @@ Each connection has two threads: one in the client side and one in the server si
 - __Platform__: Windows and Linux __(not tested)__
 - __Used libraries__: socket and Pthread
 - __Programming language__: C/C++
-- __Last code change__: 12/22/2017
+- __Last code change__: 2014
