@@ -1,39 +1,29 @@
-#include "Conexao.h"
+#include <iostream>
+#include "Connection.hpp"
 
-int main() {
-    char ip[10]="localhost",porta[6]="27015";
-    Conexao* con;
-    int op;
-    char msg[100];
-#ifdef __MINGW32__
-    WSADATA wsaData;
-    if(WSAStartup(MAKEWORD(2,2),&wsaData)!=0) {
-        printf("Socket nao iniciado.\n");
-        return 0;
-    }
-    printf("WSAStartup\n");
-#endif
-    if(Conexao::cria(&con,ip,porta)==Conexao::FRACASSO)
-        printf("Ocorreu um erro ao criar a conexao.\n");
-    else {
-        printf("Conexao criada com sucesso.\n");
-        do {
-            printf("Digite uma opcao:\n");
-            printf("0 - Mandar mensagem;\n");
-            printf("1 - Sair.\n");
-            scanf("%i",&op);
-            if(op==0) {
-                printf("Digite a mensagem:\n");
-                fflush(stdin);
-                gets(msg);
-                con->sendMensagem(msg);
-            }
-        } while(op!=1);
-        Conexao::destroi(&con);
-    }
-#ifdef __MINGW32__
-    WSACleanup();
-#endif
-    printf("Programa finalizado.\n");
-    return 0;
+using namespace std;
+
+int main(int argc,char *argv[]) {
+	int op;
+	string msg;
+	if(argc>=3) {
+		Connection::create(argv[1],argv[2]);
+		cout << "Connection successfully created." << endl;
+		do {
+			cout << "Type an option:" << endl;
+			cout << "0 - Send message;" << endl;
+			cout << "1 - Exit." << endl;
+			cin >> op;
+			if(op==0) {
+				cout << "Type the message:" << endl;
+				cin.ignore();
+				getline(cin,msg);
+				Connection::sendMessage(msg);
+			}
+		} while(op!=1);
+//		Connection::destroi();
+		cout << "Program finished." << endl;
+	} else
+		cout << "IP address and service name are necessary." << endl;
+	return 0;
 }

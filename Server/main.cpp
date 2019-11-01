@@ -1,40 +1,32 @@
-#include "Headers.h"
+#include <iostream>
+#include "Server.hpp"
 
-int main()
-{
-    char porta[6]="27015";
-    Servidor* con;
-    int op;
-    char msg[100];
-#ifdef __MINGW32__
-    WSADATA wsaData;
-    if(WSAStartup(MAKEWORD(2,2),&wsaData)!=0) {
-        printf("Socket nao iniciado.\n");
-        return 0;
-    }
-    printf("WSAStartup\n");
-#endif
-    if(Servidor::cria(&con,porta)==Servidor::FRACASSO)
-        printf("Ocorreu um erro ao criar a conexao.\n");
-    else {
-        printf("Conexao criada com sucesso.\n");
-        do {
-            printf("Digite uma opcao:\n");
-            printf("0 - Mandar mensagem broadcast;\n");
-            printf("1 - Sair.\n");
-            scanf("%i",&op);
-            if(op==0) {
-                printf("Digite a mensagem:\n");
-                fflush(stdin);
-                gets(msg);
-                con->sendMensagemBroadcast(msg);
-            }
-        } while(op!=1);
-        Servidor::destroi(&con);
-    }
-#ifdef __MINGW32__
-    WSACleanup();
-#endif
-    printf("Programa finalizado.\n");
-    return 0;
+using namespace std;
+
+int main(int argc,char *argv[]) {
+	int op;
+	string msg;
+	if(argc>=2) {
+		if(Server::create(strtoul(argv[1],NULL,0))==Server::SUCCESS) {
+			cout << "Server successfully created." << endl;
+			do {
+				cout << "Type an option:" << endl;
+				cout << "0 - Send broadcast message;" << endl;
+				cout << "1 - Exit." << endl;
+				cin >> op;
+				if(op==0) {
+					cout << "Type the message:" << endl;
+					cin.ignore();
+					getline(cin,msg);
+					Server::sendBroadcastMessage(msg);
+				}
+			} while(op!=1);
+			Server::destroy();
+			cout << "Server successfully destroyed." << endl;
+			cout << "Program finished." << endl;
+		} else
+		cout << "An error occurred in the server creation." << endl;
+	} else
+		cout << "Port number is necessary." << endl;
+	return 0;
 }
